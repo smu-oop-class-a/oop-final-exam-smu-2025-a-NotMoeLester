@@ -1,4 +1,5 @@
 using OOP.FinalTerm.Exam.Model;
+using OOP.FinalTerm.Exam.Utils;
 using SQLite;
 
 namespace OOP.FinalTerm.Exam.Repository
@@ -9,19 +10,17 @@ namespace OOP.FinalTerm.Exam.Repository
 
         public DirectorRepository()
         {
-            //TODO: Uncomment and implement the database connection
-            //_dbConnection = new SQLiteConnection(DatabaseHelper.GetDatabasePath());            
-            //_dbConnection.CreateTable<DirectorModel>();
+            _dbConnection = new SQLiteConnection(DatabaseHelper.GetDatabasePath());            
+            _dbConnection.CreateTable<DirectorModel>();
         }
 
         /// <summary>
         /// Adds a new director to the database.
-        /// </summary>
+        ///</summary>
         /// <param name="director">The director object to add</param>
         public void AddDirector(DirectorModel director)
         {
-            // TODO: Students will implement this method
-            // Hint: Use _dbConnection.Insert(director);
+            _dbConnection.Insert(director);
         }
 
         /// <summary>
@@ -30,9 +29,7 @@ namespace OOP.FinalTerm.Exam.Repository
         /// <returns>List of all directors</returns>
         public List<DirectorModel> GetAllDirectors()
         {
-            // TODO: Students will implement this method
-            // Hint: Use _dbConnection.Table<DirectorModel>().ToList();
-            return new List<DirectorModel>(); //remove this
+            return _dbConnection.Table<DirectorModel>().ToList(); 
         }
 
         /// <summary>
@@ -42,9 +39,7 @@ namespace OOP.FinalTerm.Exam.Repository
         /// <returns>Director object if found, null otherwise</returns>
         public DirectorModel GetDirectorById(int id)
         {
-            // TODO: Students will implement this method
-            // Hint: Use _dbConnection.Find<DirectorModel>(id);
-            return null; //remove this
+            return _dbConnection.Find<DirectorModel>(id); 
         }
     }
 }
